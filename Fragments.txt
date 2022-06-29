@@ -1,0 +1,52 @@
+**********************Fragments*******************************
+
+Fragments help you group a list of children without adding extra nodes to the DOM.
+
+Example Snippet:
+
+class Columns extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <td>Hello</td>
+        <td>World</td>
+      </React.Fragment>
+    );
+  }
+}
+
+There is a new shorter syntax which you can use for declaring fragments. It looks like empty tags:
+
+<></>
+
+class Columns extends React.Component {
+  render() {
+    return (
+      <>
+        <td>Hello</td>
+        <td>World</td>
+      </>
+    );
+  }
+}
+
+This can be used <></> the same way you’d use any other element except that it doesn’t support keys or attributes.
+
+Fragments declared with the explicit <React.Fragment> syntax may have keys. 
+
+function Glossary(props) {
+  return (
+    <dl>
+      {props.items.map(item => (
+        // Without the `key`, React will fire a key warning
+        <React.Fragment key={item.id}>
+          <dt>{item.term}</dt>
+          <dd>{item.description}</dd>
+        </React.Fragment>
+      ))}
+    </dl>
+  );
+}
+
+Right now "Key" is the only attribute that can be passed to fragment.
+
