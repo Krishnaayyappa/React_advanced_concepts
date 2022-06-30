@@ -48,3 +48,7 @@ Use of Portals: TO deal with the parent component's CSS when the child component
 Event Bubling: Even though a portal can be anywhere in the ""dom tree"" it behaves like a normal react child in every other way.
 portals behave like a normal react child.
 
+PORTALS WILL HELP ONLY TO CHANGE THE ELEMENTS POSITION IN THE DOM TREE AND ITS POSITIONS AND HEIRARCHY WILL BE THE SAME IN THE REACT TREE.
+
+DOM TREE - in .HTML file
+REACT TREE - in .js file
