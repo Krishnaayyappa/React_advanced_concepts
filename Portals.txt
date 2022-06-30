@@ -1,0 +1,29 @@
+**************************************Portals*****************************************************
+
+Portals provide a first-class way to render children into a DOM node that exists outside the DOM hierarchy of the parent component.
+
+*********syntax*************************
+
+ReactDOM.createPortal(child, container)
+
+The first argument (child) is any renderable React child, such as an element, string, or fragment. 
+The second argument (container) is a DOM element.
+
+A typical use case for portals is when a parent component has an overflow: hidden or z-index style, 
+but you need the child to visually “break out” of its container. For example, dialogs, hovercards, popover, modals and tooltips.
+
+*****************Note*********************
+
+When working with portals, remember that ***managing keyboard*** focus becomes very important.
+
+For modal dialogs, ensure that everyone can interact with them by following the ***WAI-ARIA Modal Authoring Practices.***
+
+**********************Event Bubbling Through Portals************************************************************************
+
+Even though a portal can be anywhere in the DOM tree, it behaves like a normal React child in every other way. 
+Features like context work exactly the same regardless of whether the child is a portal, 
+as the portal still exists in the React tree regardless of position in the DOM tree.
+
+This includes event bubbling. An event fired from inside a portal will propagate to ancestors in the containing React tree, 
+even if those elements are not ancestors in the DOM tree. Assuming the following HTML structure:
+
