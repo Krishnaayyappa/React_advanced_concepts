@@ -5,6 +5,8 @@ Portals provide a first-class way to render children into a DOM node that exists
 *********syntax*************************
 
 ReactDOM.createPortal(child, container)
+child: the JSX which we want to render
+Container: The Dom node to which we want to mount the child
 
 The first argument (child) is any renderable React child, such as an element, string, or fragment. 
 The second argument (container) is a DOM element.
@@ -26,4 +28,23 @@ as the portal still exists in the React tree regardless of position in the DOM t
 
 This includes event bubbling. An event fired from inside a portal will propagate to ancestors in the containing React tree, 
 even if those elements are not ancestors in the DOM tree. Assuming the following HTML structure:
+
+
+*********************Interpretation***************************************
+we usually render all the elements in the react to a single div element in the html file.
+
+we mount the main parent component to the div with id "root" in the html. But these portals help to break out the desired children 
+of this DOM tree from the parent component heirarchy and renders them in a new html element in the html file 
+
+DOM node is the element in the html usually the <div>
+
+To use the portals we have to create a new dom node in html and new component in the react
+
+*******************RFCE is a shortcut to form the functional component************************************************************
+React can render numbers, strings, JSX, components
+
+Use of Portals: TO deal with the parent component's CSS when the child component is a Modal, popup, tooltip.
+
+Event Bubling: Even though a portal can be anywhere in the ""dom tree"" it behaves like a normal react child in every other way.
+portals behave like a normal react child.
 
