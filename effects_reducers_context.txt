@@ -1,0 +1,52 @@
+Introduction:
+
+Working with side effects
+Managing more complex state with reducers
+Managing App wide or component wide state with contect api
+
+What is an effect or a side effect?
+
+Our main job in react is
+1) evaluate and render the react jsx
+2) manage the state and the props
+3) React to users inputs and (user) events
+4) Re-evaulate component upon the state or the prop changes
+
+The side effects are 
+1)storing data in the browser storage
+2) sending the http requests to the backend servers
+3) set and manage the timers
+
+These side effects are handled with the help of useEffect() hook
+
+syntax:
+
+useEffect(()=>{...}, [dependecies]);
+
+Dependencies of the function.
+
+The function in the first argument only runs if the specified dependencies changed when the component is evaluated.
+
+If there are no dependencies, the function the useEffect() function runs only once.
+
+UseEffect() makes sure we have one code at one place instead of multiple places.
+
+For example, checking and updating the form validity for every key stroke in the email and password field will also something that we can
+call as a sideeffect. So usereffect() hook is a super important hook that helps you deal with the code that should be executed in response
+to the change in the something and the something could be changes in the inputs or props or states of the components.
+
+What all functions or variables in the usereffect function need to be added as the dependecies?
+You must add all "things" you use in your effect function if those "things" could change because your component 
+(or some parent component) re-rendered. 
+
+state updating functions need not be considered as the dependencies as these function themselves will not change in the react.
+
+Variables that are outside the component and not internal to the components need not be added to the dependencies in the useEffect()
+
+Built in API functions like setTimeout() also need not be added to the dependencies
+
+useeffect cleanup function which clears whatever we written in the return statement after every sideeffect
+
+
+
+
