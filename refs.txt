@@ -107,3 +107,5 @@ class CustomTextInput extends React.Component {
   }
 }
 
+with react.createref() we create object refs and we create callback refs  
+
