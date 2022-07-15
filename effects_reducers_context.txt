@@ -74,7 +74,8 @@ object destructuring helps to add object properties as dependencies to useEffect
 
 We should include only the properties that our effect function might depend on from the state
 
-If we have an object as a state, related pieces of state or data and complex state updates then it is better to use usereducer()for easy state management
+If we have an object as a state, related pieces of state or data and complex state updates then it is better to use usereducer()
+for easy state management
 
 
 
