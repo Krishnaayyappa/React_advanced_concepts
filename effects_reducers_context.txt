@@ -20,7 +20,7 @@ The side effects are
 These side effects are handled with the help of useEffect() hook
 
 syntax:
-
+	
 useEffect(()=>{...}, [dependecies]);
 
 Dependencies of the function.
@@ -46,6 +46,40 @@ Variables that are outside the component and not internal to the components need
 Built in API functions like setTimeout() also need not be added to the dependencies
 
 useeffect cleanup function which clears whatever we written in the return statement after every sideeffect
+
+
+Reducers:
+
+Sometimes we have more complex states - for example if we get multiple states, multiple ways of changing it or dependencoes to other states.
+
+usereducer() can be used as a replacement for usestate(), if we need more powerful state management.
+
+Syntax
+
+const [state, dispatch_fn] = useReducer(reducer_fn, initialstate, init_fn);
+
+dispatch_fn - A function that can be used to dispatch a new action ie trigger an update of the state
+
+reducer_fn - A function that is automatically triggered once an action is dispatched(ie dispatch_fn function). it receives the latest state
+snapshot and should return the new, updated state.
+
+The reducer function is not required to be intercted with the components functions and it can be the outside the scope of the component 
+functions
+
+*************************************array destructuring and object destructuring****************************
+
+how to use useEffect and useReducer together?
+
+object destructuring helps to add object properties as dependencies to useEffect()
+
+We should include only the properties that our effect function might depend on from the state
+
+If we have an object as a state, related pieces of state or data and complex state updates then it is better to use usereducer()for easy state management
+
+
+
+
+
 
 
 
