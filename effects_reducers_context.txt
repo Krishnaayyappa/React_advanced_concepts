@@ -77,6 +77,130 @@ We should include only the properties that our effect function might depend on f
 If we have an object as a state, related pieces of state or data and complex state updates then it is better to use usereducer()
 for easy state management
 
+************************************************ React context API ***************************************
+
+Without forming a prop chain to pass data from one component to another component, we can directly pass the data from a component to 
+out desired component directly with the help of the context API
+
+React.createContext(React.CreateContext().Provider) - it will be an object that contains the components
+
+we wrap the contextAPI()to other components so that all these wrapped components will have access to the contectAPI
+
+it is divided into two parts wrapping and listening
+
+Context API works differently for class components and function components.
+
+ClassComponents we need React.CreateContext().Consumer for listening --- we can access the value or property of the context provider only
+inside the context consumer.
+FunctionComponents we need useHook() function for listening ---  we can access the value of the provider by using the hook useContext()
+
+*******************************************************exampleCode*****************************************************
+import React, {useState} from 'react';
+import FunctionContextComponent from "./FunctionContextComponent.js"
+import ClassContextComponent from "./ClassContextComponent.js"
+
+export const ThemeContext = React.createContext();
+
+export default function App(props) {
+  const [darkTheme, setDarkTheme] = useState(true);
+  
+  function toggleTheme(){
+    setDarkTheme(prevTheme => !prevTheme);
+  }
+
+  return (
+    <>
+      <ThemeContext.Provider value = {darkTheme}>
+        <button onClick={toggleTheme}>ToggleTheme</button>
+        <FunctionContextComponent />
+        <ClassContextComponent />
+      </ThemeContext.Provider>
+    </>
+  );
+}
+
+
+import React, {useContext} from "react";
+import {ThemeContext} from "./App"
+
+function FunctionContextComponent() {
+    const darkTheme = useContext(ThemeContext);
+    const ThemeStyles = {
+        backgroundColor: darkTheme ? "#000000" : "#ffffff",
+        color: darkTheme ? "#ffffff" : "#000000",
+        padding: "2rem",
+        margin: "2rem"
+    }
+    return (
+        <div style = {ThemeStyles}>FunctionContext</div>
+    );
+}
+
+export default FunctionContextComponent;
+
+import React from 'react';
+import { ThemeContext} from './App';
+
+class ClassContextComponent extends React.Component{
+    themeStyles(dark){
+        return {
+            backgroundColor: dark ? "#000000" : "#ffffff",
+            color: dark ? "#ffffff" : "#000000",
+            padding: "2rem",
+            margin: "2rem"
+        }
+    }
+
+    render(){
+        return (
+            <ThemeContext.Consumer >
+                {darkTheme => {
+                return <div style = {this.themeStyles(darkTheme)}>ClassContext</div>
+                }}
+            </ThemeContext.Consumer>
+        )
+    }
+}
+
+export default ClassContextComponent
+
+******************************************************Creating CustomContextHook********************************************************
+
+import React, { useState, useContext } from "react";
+
+export const ThemeContext = React.createContext();
+export const ThemeUpdateContext = React.createContext();
+
+// export function CurrentTheme(){
+//     return useContext(ThemeContext);
+// }
+
+// export function UpdateTheme(){
+//     return useContext(ThemeUpdateContext)
+// }
+
+function ThemeProvider({children}) {
+    const [darkTheme, setDarkTheme] = useState(true);
+
+    function toggleTheme(){
+        setDarkTheme(prevTheme => !prevTheme);
+    }
+
+    return (
+        <ThemeContext.Provider value = {darkTheme}>
+            <ThemeUpdateContext.Provider value = {toggleTheme}>
+                {children}
+            </ThemeUpdateContext.Provider>
+        </ThemeContext.Provider>
+    );
+}
+
+export default ThemeProvider;
+
+*************************************************************************************************************************************************
+
+
+
 
 
 
