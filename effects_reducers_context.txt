@@ -43,7 +43,7 @@ state updating functions need not be considered as the dependencies as these fun
 
 Variables that are outside the component and not internal to the components need not be added to the dependencies in the useEffect()
 
-Built in API functions like setTimeout() also need not be added to the dependencies
+Built in API functions like setTimeout()(browser API) also need not be added to the dependencies
 
 useeffect cleanup function which clears whatever we written in the return statement after every sideeffect
 
@@ -197,12 +197,37 @@ function ThemeProvider({children}) {
 
 export default ThemeProvider;
 
-*************************************************************************************************************************************************
+****************************************React Context limitations***************************************************************************************
+React context is not optimised for high frequency changes. For example, multiple state changes or numerous state changes per second
+
+React Context also should not be used to replace all the component communications and the props.
+For short prop chains, react context might not be needed.
+
+*******************************************Rules of the hooks********************************************************************************
+
+useEffect()
+useReducer()
+useContext()
+
+We have to call react hooks only in the React Functions
+1) React Component functions
+2) Custom hooks
+
+We have to call react hooks only at the top level in the components
+1) dont call them in the nested functions
+2) dont call them in the block statements
+
+We have to include all the things in the useeffect() function in the dependencies
+
+***********************************************************Forward Refs**********************************************************************
+If we use context hook for a particular component for forwarding the props to another component, the component cannot be reusable
+
+When we wrap a particular reusable component inside the react.context.provider, the values provided by the provider are accesssed by the 
+component with the help of the useContext() hook instead of the props. Therefore this component can be used only for the values 
+provided by the context provider
 
 
-
-
-
+So this can be rectified with the help of forward refs
 
 
 
