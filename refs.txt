@@ -63,7 +63,8 @@ Ref forwarding lets components opt into exposing any child component’s ref as 
 Callback Refs
 React also supports another way to set refs called “callback refs”, which gives more fine-grain control over when refs are set and unset.
 
-Instead of passing a ref attribute created by createRef(), you pass a function. The function receives the React component instance or HTML DOM element as its argument, which can be stored and accessed elsewhere.
+Instead of passing a ref attribute created by createRef(), you pass a function. The function receives the React component 
+instance or HTML DOM element as its argument, which can be stored and accessed elsewhere.
 
 The example below implements a common pattern: using the ref callback to store a reference to a DOM node in an instance property.
 
@@ -109,3 +110,24 @@ class CustomTextInput extends React.Component {
 
 with react.createref() we create object refs and we create callback refs  
 
+**********************************************************useref() hook***********************************************************************
+To acess the DOM elements in the functional elemets we use the useref(null) hook
+
+sample code
+
+export default function Reference(){
+
+    const inputref = useRef(null);
+    const handlefocus = () => {
+        inputref.current.focus();
+    }
+
+    return (
+        <div>
+            <Input ref = {inputref} />
+            <button onClick={handlefocus}>Submit</button>
+         </div>
+    )
+}
+
+useref() hook is also used to store mutable values

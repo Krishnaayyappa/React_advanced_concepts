@@ -31,6 +31,10 @@ If there are no dependencies, the function the useEffect() function runs only on
 
 UseEffect() makes sure we have one code at one place instead of multiple places.
 
+UseEffect() function can be used instead of componentDidMount if we want to run the code inside the useeffect() only once but the 
+dependencies should be empty.
+ 
+
 For example, checking and updating the form validity for every key stroke in the email and password field will also something that we can
 call as a sideeffect. So usereffect() hook is a super important hook that helps you deal with the code that should be executed in response
 to the change in the something and the something could be changes in the inputs or props or states of the components.
@@ -48,7 +52,7 @@ Built in API functions like setTimeout()(browser API) also need not be added to 
 useeffect cleanup function which clears whatever we written in the return statement after every sideeffect
 
 
-Reducers:
+************************************************************Reducers*************************************************************************
 
 Sometimes we have more complex states - for example if we get multiple states, multiple ways of changing it or dependencoes to other states.
 
@@ -229,6 +233,15 @@ provided by the context provider
 
 So this can be rectified with the help of forward refs
 
+useimperativeHandle, React.forwardref() together helps to have access to a paticular dom element in function components
+
+ForwardRefs are used to provide access to a ref in parent component to its child components
+
+refs are used for input focus
+
+useref() hook is used to acess the DOM elements in the Functional component
+
+********************************************************************************************************************************************
 
 
 
