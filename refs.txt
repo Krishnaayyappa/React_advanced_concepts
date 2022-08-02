@@ -131,3 +131,6 @@ export default function Reference(){
 }
 
 useref() hook is also used to store mutable values
+For example, useref() hook is used to define a variable in the useeffect() hook which can be used globally.
+Inputref =  useref()
+inputref.current = {} whatever the value is can be accessed globally, which is not possible with the normal variables insie the hook

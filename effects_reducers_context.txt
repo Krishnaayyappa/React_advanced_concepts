@@ -21,7 +21,7 @@ These side effects are handled with the help of useEffect() hook
 
 syntax:
 	
-useEffect(()=>{...}, [dependecies]);
+useEffect(()=>{...}, [dependencies]);
 
 Dependencies of the function.
 
@@ -235,11 +235,17 @@ So this can be rectified with the help of forward refs
 
 useimperativeHandle, React.forwardref() together helps to have access to a paticular dom element in function components
 
-ForwardRefs are used to provide access to a ref in parent component to its child components
-
+*****ForwardRefs are used to provide access to a ref in parent component to its child components*****
+`
 refs are used for input focus
 
 useref() hook is used to acess the DOM elements in the Functional component
+Useref() is also acts as a container to store the mutable values like using the instance variables in class component .
+It helps to access the value inside the variable of useeffect() hook ouside the useffect() hook
+
+For example, useref() hook is used to define a variable in the useeffect() hook which can be used globally.
+Inputref =  useref()
+inputref.current = {} whatever the value is can be accessed globally, which is not possible with the normal variables insie the hook
 
 ********************************************************************************************************************************************
 
